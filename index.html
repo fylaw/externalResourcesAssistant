@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ExternalResourceAssistant</title>
+<!-- 外部资源助手.动态插入外部脚本和样式表 -->
+
+	<style>
+		#resources {
+			list-style:none;
+			margin:0px;
+			padding:0px;
+		}
+		#resources li {
+			cursor:pointer;
+		}
+		#resources li:hover {
+			background-color:rgba(0,102,255,0.5);
+		}
+	</style>
+
+	<script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="Util.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+			var t = $("#resources");
+            var resources = JSON.parse(localStorage.getItem("fylaw.external.resources"));
+			$(resources).each(function(index, element) {
+                $("<li>").text(element['desc']).one("click", function(e) {
+					console.debug('clicked');
+					
+					if(element['type'] == 'script')
+						loadScript(element['url'], function(){console.debug('script loaded')});
+					else
+						loadCSS(element['url'], function(){console.debug('css loaded')});
+				}).appendTo(t);
+            });
+        });
+	</script>
+
+</head>
+
+<body>
+	<ul id="resources">
+    	
+    </ul>
+
+</body>
+</html>
