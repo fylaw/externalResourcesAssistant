@@ -3,8 +3,52 @@
 <head>
 <meta charset="utf-8">
 <title>Options</title>
+
+	<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="js/options.js"></script>
+    
+    <style type="text/css">
+		table {
+			border:1px solid rgb(220,237,254);
+			border-radius:3px;
+		}
+		td {
+			border:1px solid rgba(220,237,254, 0.8);
+		}
+		
+		tr:hover {
+			background-color:rgb(234,241,251);
+		}
+	</style>
+
 </head>
 
 <body>
+	<table id="rList" cellspacing="0px">
+    	<tr>
+        	<td width="100px">id</td>
+            <td width="120px" data-i18n-content="options_resource_type">Resource Type</td>
+            <td width="200px" data-i18n-content="options_resource_name">Resource Name</td>
+            <td data-i18n-content="options_resource_location">Resource Location</td>
+            <td width="100px">operation</td>
+        </tr>
+    </table>
+
+	<form id="form">
+        <lable for="resourcetype" data-i18n-content="options_resource_type">Resource Type</lable>
+        <select id="resourcetype">
+            <option value="script">Script</option>
+            <option value="style">CSS</option>
+        </select>
+        
+        <lable for="resourcename" data-i18n-content="options_resource_name">Resource Name</lable>
+        <input type="text" id="resourcename" />
+        
+        <lable for="resourcelocation" data-i18n-content="options_resource_location">Resource Location</lable>
+        <input type="text" id="resourcelocation" />
+        
+        <button id="btnAdd" data-i18n-content="options_add">Add</button>
+    </form>
+
 </body>
 </html>
